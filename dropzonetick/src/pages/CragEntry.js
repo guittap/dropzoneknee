@@ -46,8 +46,7 @@ export function CragEntry() {
       {
         crags.map(crag => (
           <div key={crag.id}>
-            <h3>{crag.name}</h3>
-            <p>{crag.location}</p>
+            <h3>{crag.name}, {crag.location}</h3>
           </div>
         ))
       }
