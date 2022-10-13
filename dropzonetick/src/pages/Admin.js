@@ -20,8 +20,6 @@ export function Admin() {
 
     return(
         <div className="Admin">
-            <Link to="/admin/cragentry">Enter New Crag</Link><br/>
-            <Link to="/admin/climbentry">Enter New Climb</Link>
             {
                 crags.map(crag => (
                 <div key={crag.id}>
@@ -29,6 +27,9 @@ export function Admin() {
                 </div>
                 ))
             }
+
+            <Link to="/admin/cragentry">Enter New Crag</Link><br/>
+            <Link to="/admin/climbentry">Enter New Climb</Link>
         </div>
     )
 }
