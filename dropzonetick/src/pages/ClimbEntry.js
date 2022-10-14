@@ -6,18 +6,21 @@ export function ClimbEntry() {
   const [climb, setClimb] = useState({ name: "", grade: "", rating: "", location_name: ""})
   const {name, grade, rating, location_name} = climb
   const [crags, setCrags] = useState([])
+  const [gradeMod, setGradeMod] = useState({grade: "", mod: ""})
 
+  //use effect stuff
   useEffect(() => {
     fetchClimbs()
     fetchCrags()
   }, [])
 
+  //fetching climbs normal things
   async function fetchClimbs() {
     const { data } = await supabase 
       .from('climbs')
       .select()
     setClimbs(data)
-    console.log("data: ", data)
+    //console.log("data: ", data) //saving incase i need this
   }
 
   async function createClimb() {
@@ -27,7 +30,9 @@ export function ClimbEntry() {
         {name, grade, rating, location_name}
       ])
       .single()
+      Reset()
       setClimb({ name: "", grade: "", rating: "", location_name: ""})
+      setGradeMod({grade: ""})
       fetchClimbs()
   }
 
@@ -36,7 +41,13 @@ export function ClimbEntry() {
       .from('crags')
       .select()
     setCrags(data)
-    console.log("data: ", data)
+    //console.log("data: ", data) //just in case
+  }
+
+  function Reset() {
+    document.getElementById("reset1").selectedIndex = ""
+    document.getElementById("reset2").selectedIndex = ""
+    document.getElementById("reset3").selectedIndex = ""
   }
 
   return (
@@ -53,24 +64,43 @@ export function ClimbEntry() {
         />
       </div>
       
+      {/* get grade guy guy */}
       <div className='field'>
-        <label className="label">Grade</label>
-        <input
-          className="input"
-          placeholder="Grade"
-          value={grade}
-          onChange={e => setClimb({ ...climb, grade: e.target.value})}
-        />
-        <div class="select">
-          <select 
-            placeholder='Select Location'
-            onChange={e => setClimb({ ...climb, location_name: e.target.value})}
-          >
 
+        {/* first part of grade */}
+        <label className="label">Grade</label>
+        <div className="select">
+          <select 
+              onChange={e => {setGradeMod({ ...gradeMod ,grade: e.target.value}); setClimb({ ...climb ,grade: "V"+e.target.value+gradeMod.mod})}}
+              id="reset1"
+          >
+            <option value="">Select Grade</option>
+            {
+              [...Array(18).keys()].map( arr => (
+                <option key={arr} value={arr}>V{arr}</option>
+              ))
+              //fancy way of making an array from 0-17
+            }
+          </select>
+        </div>
+
+        {/* awesome grade modifier selecter  */}
+        <div className="select">
+          <select 
+            onChange={e => {setGradeMod({ ...gradeMod ,mod: e.target.value}); setClimb({ ...climb ,grade: "V"+gradeMod.grade+e.target.value})}}
+            disabled={gradeMod.grade===""}
+            id="reset2"
+            defaultValue=""
+          >
+            <option value=""></option>
+            <option value="-">-</option>
+            <option value="+">+</option>
+            <option value={"/"+(parseInt(gradeMod.grade)+1)}>{"/"+(parseInt(gradeMod.grade)+1)}</option>
           </select>
         </div>
       </div>
       
+      {/* rating system guy */}
       <div className='field'>
       <label className="label">Rating</label>
         <input
@@ -81,28 +111,29 @@ export function ClimbEntry() {
         />
       </div>
       
+      {/* location name stuff */}
       <div className='field'>
         <label className="label">Location Name</label>
-        <div class="select">
+        <div className="select">
           <select 
-            placeholder='Select Location'
             onChange={e => setClimb({ ...climb, location_name: e.target.value})}
+            id="reset3"
           >
             <option value="">Select Location</option>
             {
               crags.map(crag => (
-                <option value={crag.name}>{crag.name}</option>
+                <option key={crag.id} value={crag.name}>{crag.name}</option>
               ))
             }
           </select>
         </div>
       </div>
       
-      <button onClick={createClimb} className="button is-primary" disabled={climb.location_name===""}>Create Climb</button>
+      <button onClick={createClimb} className="button is-primary" disabled={climb.location_name===""&&climb.grade===""}>Create Climb</button>
       {
         climbs.map(climb => (
           <div key={climb.id}>
-            <h3>{climb.name} {climb.grade} {"⭐".repeat(climb.rating)}</h3>
+            <h3>{climb.name} {climb.grade} {"★".repeat(climb.rating)}</h3>
           </div>
         ))
       }
