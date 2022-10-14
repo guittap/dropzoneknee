@@ -5,6 +5,7 @@ import { Admin } from './pages/Admin'
 import { Climbs } from './pages/Climbs'
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import './css/App.css'
+import 'bulma/css/bulma.min.css';
 
 function App() {
   return (
