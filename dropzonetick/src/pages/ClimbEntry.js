@@ -3,10 +3,9 @@ import {supabase} from '../client'
 
 export function ClimbEntry() {
   const [climbs, setClimbs] = useState([])
-  const [climb, setClimb] = useState({ name: "", grade: "", rating: "", location_name: ""})
+  const [climb, setClimb] = useState({ name: "", grade: ["", ""], rating: "", location_name: ""})
   const {name, grade, rating, location_name} = climb
   const [crags, setCrags] = useState([])
-  const [gradeMod, setGradeMod] = useState({grade: "", mod: ""})
 
   //use effect stuff
   useEffect(() => {
@@ -27,12 +26,11 @@ export function ClimbEntry() {
     await supabase
       .from('climbs')
       .insert([
-        {name, grade, rating, location_name}
+        {name, grade: "V"+climb.grade.join(""), rating, location_name}
       ])
       .single()
       Reset()
-      setClimb({ name: "", grade: "", rating: "", location_name: ""})
-      setGradeMod({grade: ""})
+      setClimb({ name: "", grade: ["", ""], rating: "", location_name: ""})
       fetchClimbs()
   }
 
@@ -41,7 +39,6 @@ export function ClimbEntry() {
       .from('crags')
       .select()
     setCrags(data)
-    //console.log("data: ", data) //just in case
   }
 
   function Reset() {
@@ -71,13 +68,9 @@ export function ClimbEntry() {
         <div className="select">
           <select 
               onChange={e => {
-                //had to do this big ass if statement because gradeMod shows undefined when unchanging modifier
-                setGradeMod({ ...gradeMod ,grade: e.target.value}); 
-                if (gradeMod.mod == null) {
-                  setClimb({ ...climb ,grade: "V"+e.target.value});
-                } else {
-                  setClimb({ ...climb ,grade: "V"+e.target.value+gradeMod.mod});
-                }
+                setClimb({ ...climb ,
+                  grade: [e.target.value, grade[1]!==""&&grade[1][0]==='/' ? '/'+(+e.target.value+1) : grade[1]]
+                });
               }}
               id="reset1"
           >
@@ -94,15 +87,19 @@ export function ClimbEntry() {
         {/* awesome grade modifier selecter  */}
         <div className="select">
           <select 
-            onChange={e => {setGradeMod({ ...gradeMod ,mod: e.target.value}); setClimb({ ...climb ,grade: "V"+gradeMod.grade+e.target.value})}}
-            disabled={gradeMod.grade===""}
+            onChange={e => {
+              setClimb({ ...climb ,
+                grade: [grade[0], e.target.value]
+              })}
+            }
+            disabled={climb.grade[0]===""}
             id="reset2"
             defaultValue=""
           >
             <option value=""></option>
             <option value="-">-</option>
             <option value="+">+</option>
-            <option value={"/"+(parseInt(gradeMod.grade)+1)}>{"/"+(parseInt(gradeMod.grade)+1)}</option>
+            <option value={"/"+(parseInt(climb.grade[0])+1)}>{"/"+(parseInt(climb.grade[0])+1)}</option>
           </select>
         </div>
       </div>
@@ -136,7 +133,7 @@ export function ClimbEntry() {
         </div>
       </div>
       
-      <button onClick={createClimb} className="button is-primary" disabled={climb.location_name===""&&climb.grade===""}>Create Climb</button>
+      <button onClick={createClimb} className="button is-primary" disabled={climb.location_name===""||climb.grade[0]===""}>Create Climb</button>
       {
         climbs.map(climb => (
           <div key={climb.id}>

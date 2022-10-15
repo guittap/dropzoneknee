@@ -20,10 +20,11 @@ export function Admin() {
 
     return(
         <div className="Admin">
+          <h1 className='title'>🥳 Wargen's 2023 Tick List 💯</h1>
             {
                 crags.map(crag => (
                 <div key={crag.id}>
-                    <Link to={`/admin/${crag.id}/${crag.name.replace(/\s/g, '-').toLowerCase()}`}><h3>{crag.name}, {crag.location}</h3></Link>
+                    <Link to={`/admin/${crag.id}/${crag.name.replace(/\s/g, '-').toLowerCase()}`}><h1>{crag.name}, {crag.location}</h1></Link>
                 </div>
                 ))
             }

@@ -38,7 +38,7 @@ export function Climbs() {
             {
                 climbs.map(climb => (
                 <div key={climb.id}>
-                    <h3>{climb.name} {climb.grade} {"⭐".repeat(climb.rating)}</h3>
+                    <h3>{climb.name} {climb.grade} {"★".repeat(climb.rating)}</h3>
                 </div>
                 ))
             }
