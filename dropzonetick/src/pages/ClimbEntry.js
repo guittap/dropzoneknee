@@ -53,7 +53,6 @@ export function ClimbEntry() {
   return (
     <div className="ClimbEntry container is-max-desktop">
       <h1 className='title'>Climb Entry</h1>
-
       <div className='field'>
         <label className="label">Climb Name</label>
         <input
@@ -71,7 +70,15 @@ export function ClimbEntry() {
         <label className="label">Grade</label>
         <div className="select">
           <select 
-              onChange={e => {setGradeMod({ ...gradeMod ,grade: e.target.value}); setClimb({ ...climb ,grade: "V"+e.target.value+gradeMod.mod})}}
+              onChange={e => {
+                //had to do this big ass if statement because gradeMod shows undefined when unchanging modifier
+                setGradeMod({ ...gradeMod ,grade: e.target.value}); 
+                if (gradeMod.mod == null) {
+                  setClimb({ ...climb ,grade: "V"+e.target.value});
+                } else {
+                  setClimb({ ...climb ,grade: "V"+e.target.value+gradeMod.mod});
+                }
+              }}
               id="reset1"
           >
             <option value="">Select Grade</option>

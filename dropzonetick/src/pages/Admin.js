@@ -15,7 +15,7 @@ export function Admin() {
           .from('crags')
           .select()
         setCrags(data)
-        console.log("data: ", data)
+        //console.log("data: ", data)
       }
 
     return(
