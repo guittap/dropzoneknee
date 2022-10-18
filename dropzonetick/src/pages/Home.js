@@ -1,9 +1,9 @@
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export function Home() {
-    return(
-        <div className="Home">
-            <Link to="/admin">admin</Link>
-
-        </div>
-    )}
+  return (
+    <div className="Home">
+      <Link to="/admin">admin</Link>
+    </div>
+  );
+}
