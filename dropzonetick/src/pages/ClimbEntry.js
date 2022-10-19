@@ -62,7 +62,7 @@ export function ClimbEntry() {
         </div>
 
         <div className="mb-5 w-full px-3">
-          <label className="mb-3 block text-base font-medium text-[#482673]">
+          <label className="mb-3 block font-bold text-base text-[#482673]">
             Climb Name
           </label>
           <input
@@ -77,7 +77,7 @@ export function ClimbEntry() {
           <div className="-mx-3 flex flex-wrap">
             <div className="w-full px-3 sm:w-1/2">
               <div className="mb-5">
-                <label className="mb-3 block text-base font-medium text-[#482673]">
+                <label className="font-bold mb-3 block text-base text-[#482673]">
                   Grade
                 </label>
                 <select
@@ -93,7 +93,7 @@ export function ClimbEntry() {
                     });
                   }}
                   value={climb.grade[0]}
-                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#482673] focus:shadow-md"
+                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base text-[#6B7280] outline-none focus:border-[#482673] focus:shadow-md"
                 >
                   <option value="" disabled hidden>
                     Select Grade
@@ -111,7 +111,7 @@ export function ClimbEntry() {
             </div>
             <div className="w-full px-3 sm:w-1/2">
               <div className="mb-5">
-                <label className="mb-3 block text-base font-medium text-[#482673]">
+                <label className="mb-3 font-bold block text-base text-[#482673]">
                   Modifier
                 </label>
                 <select
@@ -120,7 +120,7 @@ export function ClimbEntry() {
                   }}
                   disabled={climb.grade[0] === ""}
                   value={climb.grade[1]}
-                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#482673] focus:shadow-md"
+                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base text-[#6B7280] outline-none focus:border-[#482673] focus:shadow-md"
                 >
                   <option value=""></option>
                   <option value="-">-</option>
@@ -137,13 +137,13 @@ export function ClimbEntry() {
         <div>
           {/* rating system guy */}
           <div className="mb-5 w-full px-3">
-            <label className="mb-3 block text-base font-medium text-[#482673]">
+            <label className="mb-3 font-bold block text-base text-[#482673]">
               Rating
             </label>
             <input
               type="number"
               min="1"
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#482673] focus:shadow-md"
+              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base text-[#6B7280] outline-none focus:border-[#482673] focus:shadow-md"
               placeholder="Rating"
               value={rating}
               onChange={(e) => setClimb({ ...climb, rating: e.target.value })}
@@ -152,7 +152,7 @@ export function ClimbEntry() {
 
           {/* location name stuff */}
           <div className="mb-5 w-full px-3">
-            <label className="mb-3 block text-base font-medium text-[#482673]">
+            <label className="mb-3 font-bold block text-base text-[#482673]">
               Location Name
             </label>
             <div className="select">
@@ -179,7 +179,7 @@ export function ClimbEntry() {
         <div className="text-center">
           <button
             onClick={createClimb}
-            className="bg-transparent hover:bg-[#482673] text-[#482673] font-semibold hover:text-white py-2 px-4 border border-[#482673] hover:border-transparent rounded"
+            className="bg-transparent hover:bg-[#482673] text-[#482673] font-bold hover:text-white py-2 px-4 border border-[#482673] hover:border-transparent rounded"
             disabled={climb.locationName === "" || climb.grade[0] === ""}
           >
             Create Climb
@@ -187,7 +187,7 @@ export function ClimbEntry() {
         </div>
       </div>
 
-      <div className="">
+      <div className="px-3">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-5">
           List of Climbs
         </h1>

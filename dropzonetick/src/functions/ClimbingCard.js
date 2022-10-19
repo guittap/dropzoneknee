@@ -1,4 +1,5 @@
 import { supabase } from "../client";
+import { RiDeleteBin7Fill } from "react-icons/ri";
 
 export const ClimbingCard = ({ climb, onDelete }) => {
   async function deleteClimb() {
@@ -9,29 +10,19 @@ export const ClimbingCard = ({ climb, onDelete }) => {
   }
 
   return (
-    <div className="climbingCard">
+    <div className="climbingCard flex">
       <div key={climb.id}>
-        <span className="text-xl mr-2">
+        <span className="font-bold mr-2 align-center">
           {climb.name} {climb.grade}
         </span>
-        <span className="text-xl mr-2 text-yellow-500">
+        <span className="mr-2 text-yellow-500 align-center">
           {"★".repeat(climb.rating)}
         </span>
-        <button className="delete" onClick={deleteClimb}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 mr-2"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-            />
-          </svg>
+        <button
+          className="text-gray-500 font-semibold hover:text-red-500 align-center"
+          onClick={deleteClimb}
+        >
+          <RiDeleteBin7Fill />
         </button>
       </div>
     </div>

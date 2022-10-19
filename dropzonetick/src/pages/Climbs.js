@@ -34,13 +34,18 @@ export function Climbs() {
   }
 
   return (
-    <div className="Climbs">
-      <h1 className="title">{crag}</h1>
+    <div className="Climbs max-w-[1000px] mx-auto w-full mt-5 text-center">
+      <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        {crag}
+      </h1>
       {climbs.map((climb) => (
         <div key={climb.id}>
-          <h3>
-            {climb.name} {climb.grade} {"★".repeat(climb.rating)}
-          </h3>
+          <span className="font-bold mr-2 align-center">
+            {climb.name} {climb.grade}
+          </span>
+          <span className="mr-2 text-yellow-500 align-center">
+            {"★".repeat(climb.rating)}
+          </span>
         </div>
       ))}
       <Link to="/admin/climbentry">Enter New Climb</Link>
