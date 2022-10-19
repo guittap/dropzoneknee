@@ -14,6 +14,7 @@ function App() {
         <Route path="/admin/cragentry" element={<CragEntry />} />
         <Route path="/admin/climbentry" element={<ClimbEntry />} />
         <Route path="/admin/:cragId/:cragName" element={<Climbs />} />
+        <Route path="/:cragId/:cragName" element={<Climbs />} />
       </Routes>
     </BrowserRouter>
   );

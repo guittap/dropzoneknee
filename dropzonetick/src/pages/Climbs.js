@@ -35,7 +35,7 @@ export function Climbs() {
 
   return (
     <div className="Climbs max-w-[1000px] mx-auto w-full mt-5 text-center">
-      <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      <h1 className="text-2xl font-bold tracking-tight text-gray-900">
         {crag}
       </h1>
       {climbs.map((climb) => (
@@ -48,7 +48,11 @@ export function Climbs() {
           </span>
         </div>
       ))}
-      <Link to="/admin/climbentry">Enter New Climb</Link>
+      {window.location.href.split("/").slice(-3)[0] === "admin" ? (
+        <Link to="/admin/climbentry">Enter New Climb</Link>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

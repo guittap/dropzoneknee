@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
-import { ClimbingCard } from "../functions/ClimbingCard";
+import { ClimbingCard } from "../components/ClimbingCard";
 
 export function ClimbEntry() {
   const [climbs, setClimbs] = useState([]);
@@ -56,7 +56,7 @@ export function ClimbEntry() {
     <div className="main max-w-[550px] mx-auto w-full mt-5">
       <div className="ClimbEntry mb-5">
         <div className="mb-5 w-full px-3">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
             Climb Entry
           </h1>
         </div>
@@ -188,7 +188,7 @@ export function ClimbEntry() {
       </div>
 
       <div className="px-3">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-5">
+        <h1 className="text-2xl font-bold tracking-tight text-gray-900 mb-5">
           List of Climbs
         </h1>
         {climbs.map((climb) => (

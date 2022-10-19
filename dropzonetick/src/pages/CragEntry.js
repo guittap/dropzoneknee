@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
+import { CragCard } from "../components/CragCard";
 
 export function CragEntry() {
   const [crags, setCrags] = useState([]);
@@ -22,11 +23,15 @@ export function CragEntry() {
     fetchCrags();
   }
 
+  function handleDelete(id) {
+    setCrags((crags) => crags.filter((crag) => crag.id !== id));
+  }
+
   return (
     <div className="CragEntry max-w-[550px] mx-auto w-full mt-5">
       <div>
         <div className="mb-5 w-full px-3">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
             Crag Entry
           </h1>
         </div>
@@ -65,7 +70,7 @@ export function CragEntry() {
 
       <div className="Crags">
         <div className="mb-5 w-full px-3">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
             List of Crags
           </h1>
         </div>
@@ -73,8 +78,8 @@ export function CragEntry() {
         <div className="mb-5 w-full px-3">
           {crags.map((crag) => (
             <div key={crag.id}>
-              <h3 className="font-bold">
-                {crag.name}, {crag.location}
+              <h3 className="font-bold mb-2">
+                <CragCard key={crag.id} crag={crag} onDelete={handleDelete} />
               </h3>
             </div>
           ))}

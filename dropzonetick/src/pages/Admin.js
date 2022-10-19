@@ -17,7 +17,7 @@ export function Admin() {
 
   return (
     <div className="Admin max-w-[1000px] mx-auto w-full mt-5 text-center">
-      <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      <h1 className="text-2xl font-bold tracking-tight text-gray-900">
         🥳 Wargen's 2023 Tick List 💯
       </h1>
 
