@@ -31,15 +31,13 @@ export function CragEntry() {
     <div className="CragEntry max-w-[550px] mx-auto w-full mt-5">
       <div>
         <div className="mb-5 w-full px-3">
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-            Crag Entry
-          </h1>
+          <h1 className="text-2xl font-bold tracking-tight">Crag Entry</h1>
         </div>
 
         <div className="mb-5 w-full px-3">
           <label className="mb-3 block font-bold text-base ">Crag Name</label>
           <input
-            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base text-[#6B7280] outline-none focus:border-[#482673] focus:shadow-md"
+            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base text-[#6B7280] outline-none focus:border-primary focus:shadow-md"
             placeholder="Crag Name"
             value={name}
             onChange={(e) => setCrag({ ...crag, name: e.target.value })}
@@ -51,7 +49,7 @@ export function CragEntry() {
             Location Name
           </label>
           <input
-            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base text-[#6B7280] outline-none focus:border-[#482673] focus:shadow-md"
+            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base text-[#6B7280] outline-none focus:border-primary focus:shadow-md"
             placeholder="State, Country, etc."
             value={location}
             onChange={(e) => setCrag({ ...crag, location: e.target.value })}
@@ -61,7 +59,7 @@ export function CragEntry() {
         <div className="mb-5 w-full px-3 text-center">
           <button
             onClick={createCrag}
-            className="bg-transparent hover:bg-[#482673] text-[#482673] font-bold hover:text-white py-2 px-4 border border-[#482673] hover:border-transparent rounded"
+            className="bg-transparent hover:bg-primary text-primary font-bold hover:text-white py-2 px-4 border border-primary hover:border-transparent rounded"
           >
             Create Crag
           </button>
@@ -70,17 +68,13 @@ export function CragEntry() {
 
       <div className="Crags">
         <div className="mb-5 w-full px-3">
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-            List of Crags
-          </h1>
+          <h1 className="text-2xl font-bold tracking-tight">List of Crags</h1>
         </div>
 
         <div className="mb-5 w-full px-3">
           {crags.map((crag) => (
             <div key={crag.id}>
-              <h3 className="font-bold mb-2">
-                <CragCard key={crag.id} crag={crag} onDelete={handleDelete} />
-              </h3>
+              <CragCard key={crag.id} crag={crag} onDelete={handleDelete} />
             </div>
           ))}
         </div>

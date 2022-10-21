@@ -15,11 +15,11 @@ export const ClimbingCard = ({ climb, onDelete }) => {
         <span className="font-bold mr-2 align-center">
           {climb.name} {climb.grade}
         </span>
-        <span className="mr-2 text-yellow-500 align-center">
+        <span className="mr-2 text-yellow align-center">
           {"★".repeat(climb.rating)}
         </span>
         <button
-          className="text-gray-500 font-semibold hover:text-red-500 align-center"
+          className="text-gray font-semibold hover:text-red align-center"
           onClick={deleteClimb}
         >
           <RiDeleteBin7Fill />

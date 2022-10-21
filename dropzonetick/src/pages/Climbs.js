@@ -35,15 +35,13 @@ export function Climbs() {
 
   return (
     <div className="Climbs max-w-[1000px] mx-auto w-full mt-5 text-center">
-      <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-        {crag}
-      </h1>
+      <h1 className="mb-5 text-2xl font-bold tracking-tight">{crag}</h1>
       {climbs.map((climb) => (
         <div key={climb.id}>
           <span className="font-bold mr-2 align-center">
             {climb.name} {climb.grade}
           </span>
-          <span className="mr-2 text-yellow-500 align-center">
+          <span className="mr-2 text-yellow align-center">
             {"★".repeat(climb.rating)}
           </span>
         </div>

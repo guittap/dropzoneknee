@@ -28,7 +28,7 @@ export const CragCard = ({ crag, onDelete }) => {
       </div>
       <div className="mr-2 align-center">
         <button
-          className="text-gray-500 font-semibold hover:text-red-500 align-center"
+          className="text-gray font-semibold hover:text-red align-center"
           onClick={deleteCrag}
         >
           <RiDeleteBin7Fill />

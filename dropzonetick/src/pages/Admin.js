@@ -17,9 +17,11 @@ export function Admin() {
 
   return (
     <div className="Admin max-w-[1000px] mx-auto w-full mt-5 text-center">
-      <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-        🥳 Wargen's 2023 Tick List 💯
-      </h1>
+      <div className="mb-5">
+        <h1 className="text-2xl font-bold tracking-tight">
+          🥳 Wargen's 2023 Tick List 💯
+        </h1>
+      </div>
 
       {crags.map((crag) => (
         <div key={crag.id}>
