@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
 import { ClimbingCard } from "../components/ClimbingCard";
-import { Select } from "../components/Select";
+import { Select, Input, Button, Label } from "../components/Styles";
 
 export function ClimbEntry() {
   const [climbs, setClimbs] = useState([]);
@@ -61,11 +61,8 @@ export function ClimbEntry() {
         </div>
 
         <div className="mb-5 w-full px-3">
-          <label className="mb-3 block font-bold text-base text-primary">
-            Climb Name
-          </label>
-          <input
-            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-primary focus:shadow-md"
+          <Label>Climb Name</Label>
+          <Input
             placeholder="Climb Name"
             value={name}
             onChange={(e) => setClimb({ ...climb, name: e.target.value })}
@@ -76,9 +73,7 @@ export function ClimbEntry() {
           <div className="-mx-3 flex flex-wrap">
             <div className="w-full px-3 sm:w-1/2">
               <div className="mb-5">
-                <label className="font-bold mb-3 block text-base text-primary">
-                  Grade
-                </label>
+                <Label>Grade</Label>
                 <Select
                   onChange={(e) => {
                     setClimb({
@@ -106,9 +101,7 @@ export function ClimbEntry() {
             </div>
             <div className="w-full px-3 sm:w-1/2">
               <div className="mb-5">
-                <label className="mb-3 font-bold block text-base text-primary">
-                  Modifier
-                </label>
+                <Label>Modifier</Label>
                 <Select
                   onChange={(e) => {
                     setClimb({ ...climb, grade: [grade[0], e.target.value] });
@@ -133,13 +126,10 @@ export function ClimbEntry() {
         <div>
           {/* rating system guy */}
           <div className="mb-5 w-full px-3">
-            <label className="mb-3 font-bold block text-base text-primary">
-              Rating
-            </label>
-            <input
+            <Label>Rating</Label>
+            <Input
               type="number"
               min="1"
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#482673] focus:shadow-md"
               placeholder="Rating"
               value={rating}
               onChange={(e) => setClimb({ ...climb, rating: e.target.value })}
@@ -148,9 +138,7 @@ export function ClimbEntry() {
 
           {/* location name stuff */}
           <div className="mb-5 w-full px-3">
-            <label className="mb-3 font-bold block text-base text-primary">
-              Location Name
-            </label>
+            <Label>Location Name</Label>
             <div className="select">
               <Select
                 onChange={(e) =>
@@ -172,13 +160,12 @@ export function ClimbEntry() {
         </div>
 
         <div className="text-center">
-          <button
+          <Button
             onClick={createClimb}
-            className="bg-transparent hover:bg-primary text-primary font-bold hover:text-white py-2 px-4 border border-primary hover:border-transparent rounded"
             disabled={climb.locationName === "" || climb.grade[0] === ""}
           >
             Create Climb
-          </button>
+          </Button>
         </div>
       </div>
 

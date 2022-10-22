@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
 import { CragCard } from "../components/CragCard";
+import { Input, Button, Label } from "../components/Styles";
 
 export function CragEntry() {
   const [crags, setCrags] = useState([]);
@@ -35,9 +36,8 @@ export function CragEntry() {
         </div>
 
         <div className="mb-5 w-full px-3">
-          <label className="mb-3 block font-bold text-base ">Crag Name</label>
-          <input
-            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base text-[#6B7280] outline-none focus:border-primary focus:shadow-md"
+          <Label>Crag Name</Label>
+          <Input
             placeholder="Crag Name"
             value={name}
             onChange={(e) => setCrag({ ...crag, name: e.target.value })}
@@ -45,11 +45,8 @@ export function CragEntry() {
         </div>
 
         <div className="mb-5 w-full px-3">
-          <label className="mb-3 block font-bold text-base ">
-            Location Name
-          </label>
-          <input
-            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base text-[#6B7280] outline-none focus:border-primary focus:shadow-md"
+          <Label>Location Name</Label>
+          <Input
             placeholder="State, Country, etc."
             value={location}
             onChange={(e) => setCrag({ ...crag, location: e.target.value })}
@@ -57,12 +54,7 @@ export function CragEntry() {
         </div>
 
         <div className="mb-5 w-full px-3 text-center">
-          <button
-            onClick={createCrag}
-            className="bg-transparent hover:bg-primary text-primary font-bold hover:text-white py-2 px-4 border border-primary hover:border-transparent rounded"
-          >
-            Create Crag
-          </button>
+          <Button onClick={createCrag}>Create Crag</Button>
         </div>
       </div>
 
