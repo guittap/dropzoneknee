@@ -92,10 +92,16 @@ export function ClimbEntry() {
                     });
                   }}
                   value={climb.grade[0]}
-                  data={[...Array(18).keys()]}
-                  firstOption="Select Grade"
-                  isGrade={true}
-                />
+                >
+                  <option value="" disabled hidden>
+                    Select Grade
+                  </option>
+                  {[...Array(18).keys()].map((data) => (
+                    <option key={data} value={data}>
+                      {"V" + data}
+                    </option>
+                  ))}
+                </Select>
               </div>
             </div>
             <div className="w-full px-3 sm:w-1/2">
@@ -110,7 +116,15 @@ export function ClimbEntry() {
                   value={climb.grade[1]}
                   data={["", "-", "+", "/" + (parseInt(climb.grade[0]) + 1)]}
                   disabled={climb.grade[0] === ""}
-                />
+                >
+                  {["", "-", "+", "/" + (parseInt(climb.grade[0]) + 1)].map(
+                    (data) => (
+                      <option key={data} value={data}>
+                        {data}
+                      </option>
+                    )
+                  )}
+                </Select>
               </div>
             </div>
           </div>
@@ -143,9 +157,16 @@ export function ClimbEntry() {
                   setClimb({ ...climb, locationName: e.target.value })
                 }
                 value={climb.locationName}
-                data={crags.map((crag) => crag.name)}
-                firstOption="Select Location"
-              />
+              >
+                <option value="" disabled hidden>
+                  Select Location
+                </option>
+                {crags.map((crag) => (
+                  <option key={crag.id} value={crag.name}>
+                    {crag.name}
+                  </option>
+                ))}
+              </Select>
             </div>
           </div>
         </div>
