@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
 import { CragCard } from "../components/CragCard";
+import { Navbar } from "../components/Navbar";
 import { Input, Button, Label } from "../components/Styles";
 
 export function CragEntry() {
@@ -29,46 +30,49 @@ export function CragEntry() {
   }
 
   return (
-    <div className="CragEntry max-w-[550px] mx-auto w-full mt-5">
-      <div>
-        <div className="mb-5 w-full px-3">
-          <h1 className="text-2xl font-bold tracking-tight">Crag Entry</h1>
+    <div className="mx-auto w-full">
+      <Navbar />
+      <div className="CragEntry max-w-[550px] mt-14 mx-auto w-full">
+        <div className="CragForm">
+          <div className="mb-5 w-full px-3">
+            <h1 className="text-2xl font-bold tracking-tight">Crag Entry</h1>
+          </div>
+
+          <div className="mb-5 w-full px-3">
+            <Label>Crag Name</Label>
+            <Input
+              placeholder="Crag Name"
+              value={name}
+              onChange={(e) => setCrag({ ...crag, name: e.target.value })}
+            />
+          </div>
+
+          <div className="mb-5 w-full px-3">
+            <Label>Location Name</Label>
+            <Input
+              placeholder="State, Country, etc."
+              value={location}
+              onChange={(e) => setCrag({ ...crag, location: e.target.value })}
+            />
+          </div>
+
+          <div className="mb-5 w-full px-3 text-center">
+            <Button onClick={createCrag}>Create Crag</Button>
+          </div>
         </div>
 
-        <div className="mb-5 w-full px-3">
-          <Label>Crag Name</Label>
-          <Input
-            placeholder="Crag Name"
-            value={name}
-            onChange={(e) => setCrag({ ...crag, name: e.target.value })}
-          />
-        </div>
+        <div className="Crags mb-5">
+          <div className="mb-5 w-full px-3">
+            <h1 className="text-2xl font-bold tracking-tight">List of Crags</h1>
+          </div>
 
-        <div className="mb-5 w-full px-3">
-          <Label>Location Name</Label>
-          <Input
-            placeholder="State, Country, etc."
-            value={location}
-            onChange={(e) => setCrag({ ...crag, location: e.target.value })}
-          />
-        </div>
-
-        <div className="mb-5 w-full px-3 text-center">
-          <Button onClick={createCrag}>Create Crag</Button>
-        </div>
-      </div>
-
-      <div className="Crags">
-        <div className="mb-5 w-full px-3">
-          <h1 className="text-2xl font-bold tracking-tight">List of Crags</h1>
-        </div>
-
-        <div className="mb-5 w-full px-3">
-          {crags.map((crag) => (
-            <div key={crag.id}>
-              <CragCard key={crag.id} crag={crag} onDelete={handleDelete} />
-            </div>
-          ))}
+          <div className="mb-5 w-full px-3">
+            {crags.map((crag) => (
+              <div key={crag.id}>
+                <CragCard key={crag.id} crag={crag} onDelete={handleDelete} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

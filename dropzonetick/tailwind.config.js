@@ -9,6 +9,8 @@ module.exports = {
       white: "#FFFFFF",
       red: "rgb(239 68 68)",
       gray: "rgb(107 114 128)",
+      green: "rgb(34 197 94)",
+      lightgray: "rgb(156 163 175)",
     },
     extend: {},
   },

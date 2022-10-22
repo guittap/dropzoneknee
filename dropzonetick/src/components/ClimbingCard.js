@@ -15,8 +15,12 @@ export const ClimbingCard = ({ climb, onDelete }) => {
         <span className="font-bold mr-2 align-center">
           {climb.name} {climb.grade}
         </span>
-        <span className="mr-2 text-yellow align-center">
+
+        <span className="text-yellow align-center">
           {"★".repeat(climb.rating)}
+        </span>
+        <span className="mr-2 text-lightgray align-center">
+          {"★".repeat(5 - climb.rating)}
         </span>
         <button
           className="text-gray font-semibold hover:text-red align-center"
