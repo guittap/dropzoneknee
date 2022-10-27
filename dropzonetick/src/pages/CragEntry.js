@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
+import { AddButton } from "../components/AddButton";
 import { CragCard } from "../components/CragCard";
 import { Navbar } from "../components/Navbar";
 import { Input, Button, Label } from "../components/Styles";
@@ -75,6 +76,7 @@ export function CragEntry() {
           </div>
         </div>
       </div>
+      <AddButton />
     </div>
   );
 }

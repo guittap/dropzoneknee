@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../client";
-import { Link } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
+import { AddButton } from "../components/AddButton";
 
 export function Climbs() {
   const [cragID] = window.location.href.split("/").slice(-2);
@@ -53,8 +53,8 @@ export function Climbs() {
             </span>
           </div>
         ))}
-        {isAdmin ? <Link to="/admin/climbentry">Enter New Climb</Link> : ""}
       </div>
+      {isAdmin ? <AddButton /> : ""}
     </div>
   );
 }

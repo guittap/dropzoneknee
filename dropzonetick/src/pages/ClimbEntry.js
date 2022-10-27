@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
+import { AddButton } from "../components/AddButton";
 import { ClimbingCard } from "../components/ClimbingCard";
 import { Navbar } from "../components/Navbar";
 import { Select, Input, Button, Label } from "../components/Styles";
@@ -188,6 +189,7 @@ export function ClimbEntry() {
           ))}
         </div>
       </div>
+      <AddButton />
     </div>
   );
 }
