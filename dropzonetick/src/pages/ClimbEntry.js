@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
 import { AddButton } from "../components/AddButton";
-import { ClimbingCard } from "../components/ClimbingCard";
+import { ClimbingCard } from "../components/ClimbEdit";
 import { Navbar } from "../components/Navbar";
 import { Select, Input, Button, Label } from "../components/Styles";
 

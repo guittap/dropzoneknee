@@ -32,7 +32,7 @@ export function Admin() {
   return (
     <div className="Admin mx-auto w-full">
       <Navbar />
-      <div className="max-w-[550px] mx-auto w-full mt-14 text-center">
+      <div className="max-w-[550px] mx-auto w-full mt-20 text-center">
         <div className="CragCard mx-3">
           {crags.map((crag) => (
             <div key={crag.id}>
